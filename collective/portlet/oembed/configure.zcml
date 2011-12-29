@@ -1,0 +1,20 @@
+<configure
+    xmlns="http://namespaces.zope.org/zope"
+    xmlns:browser="http://namespaces.zope.org/browser"
+    xmlns:genericsetup="http://namespaces.zope.org/genericsetup"
+    i18n_domain="collective.portlet.oembed">
+
+  <browser:resourceDirectory
+    name="collective.portlet.oembed"
+    directory="resources"
+    />
+
+  <genericsetup:registerProfile
+      name="default"
+      title="collective.portlet.oembed"
+      directory="profiles/default"
+      description='Extension profile for collective.portlet.oembed.'
+      provides="Products.GenericSetup.interfaces.EXTENSION"
+      />
+
+</configure>
