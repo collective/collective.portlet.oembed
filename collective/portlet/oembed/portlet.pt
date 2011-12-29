@@ -1,5 +1,5 @@
 <div tal:condition="view/data/omit_border"
-     tal:attributes="class string:portletEmbed ${view/css_class}"
+     tal:attributes="class string:portletOEmbed ${view/css_class}"
      tal:content="structure view/embed" />
 <dl tal:condition="not:view/data/omit_border"
     tal:attributes="class string:portlet portletOEmbed ${view/css_class}"
