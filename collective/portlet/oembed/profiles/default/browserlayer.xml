@@ -1,6 +1,0 @@
-<layers>
-<!-- uncomment to activate
-    <layer name="collective.portlet.oembed"
-           interface="collective.portlet.oembed.interfaces.ILayer" />
--->
-</layers>

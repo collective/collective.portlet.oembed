@@ -4,3 +4,12 @@ try:
 except ImportError:
     from pkgutil import extend_path
     __path__ = extend_path(__path__, __name__)
+
+
+from zope.i18nmessageid import MessageFactory
+messageFactory = MessageFactory('collective.portlet.oembed')
+ploneMessageFactory = MessageFactory('plone')
+
+from Products.CMFCore.permissions import setDefaultRoles
+setDefaultRoles('collective.portlet.embed: Add oembed portlet',
+                ('Manager', 'Site Administrator', 'Owner',))
