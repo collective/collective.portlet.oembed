@@ -4,8 +4,7 @@ Changelog
 1.0 (unreleased)
 ----------------
 
-- Nothing changed yet.
-
+- Adjust with collective.oembed 1.0 api
 
 1.0a (2012-01-02)
 -----------------

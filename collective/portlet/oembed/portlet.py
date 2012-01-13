@@ -101,7 +101,7 @@ class Renderer(static.Renderer):
             consumer_view._maxwidth = self.data.maxwidth
         if self.data.maxheight is not None:
             consumer_view._maxheight = self.data.maxheight
-        return consumer_view.embed_auto()
+        return consumer_view.get_embed_auto()
 
     def css_class(self):
         """Generate a CSS class from the portlet header
