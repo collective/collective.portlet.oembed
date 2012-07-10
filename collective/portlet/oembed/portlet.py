@@ -26,7 +26,7 @@ class IOEmbedPortlet(IPortletDataProvider):
         title=_(u"Remote URL"),
         description=_(u"The external content you want to display using oembed"),
         required=True)
-    
+
     maxwidth = schema.Int(
         title=_(u"Maximum width"),
         description=_(u"The width will be added to the oembed request"),
@@ -92,8 +92,9 @@ class Renderer(static.Renderer):
     render = ViewPageTemplateFile('portlet.pt')
 
     def embed(self):
-        consumer_view = component.queryMultiAdapter((self.context,self.request),
-                                        name=u'collective.oembed.consumer')
+        consumer_view = component.queryMultiAdapter((self.context,
+                                                     self.request),
+                                       name=u'collective.oembed.superconsumer')
         if consumer_view is None:
             return u""
         consumer_view._url = self.data.remote_url
@@ -127,6 +128,7 @@ class AddForm(base.AddForm):
 
     def create(self, data):
         return Assignment(**data)
+
 
 class EditForm(base.EditForm):
     """Portlet edit form.
