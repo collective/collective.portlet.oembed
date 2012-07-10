@@ -4,7 +4,8 @@ Changelog
 1.1 (unreleased)
 ----------------
 
-- Nothing changed yet.
+- Now the portlet use superconsumer instead of consumer to support every
+  services supported by collective.oembed
 
 
 1.0 (2012-01-13)
