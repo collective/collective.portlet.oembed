@@ -1,7 +1,7 @@
 Changelog
 =========
 
-1.1 (unreleased)
+1.1 (2012-07-10)
 ----------------
 
 - Now the portlet use superconsumer instead of consumer to support every
