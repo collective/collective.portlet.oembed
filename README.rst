@@ -19,6 +19,16 @@ portlet add/edit form
 * footer (TEXT)
 * more_url (URI)
 
+Extra feature: Use jquery oembedall for rendering
+=================================================
+
+This addon use by default collective.oembed to render the portlet.
+It means HTML code is generated server side.
+This can be achieved using javascript.
+
+You can install collective.js.oembedall and set the 
+'collective.portlet.oebmed.rendering' configuration registry's record to
+'collective.js.oembedall'
 
 Credits
 =======

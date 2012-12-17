@@ -1,0 +1,8 @@
+<registry>
+  <record name="collective.portlet.oembed.rendering">
+        <field type="plone.registry.field.ASCIILine">
+            <title>Rendering</title>
+        </field>
+        <value>collective.oembed</value>
+    </record>
+</registry>

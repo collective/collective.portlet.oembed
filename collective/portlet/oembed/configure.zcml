@@ -12,6 +12,7 @@
       description='Extension profile for collective.portlet.oembed.'
       provides="Products.GenericSetup.interfaces.EXTENSION"
       />
+  <include file="upgrades.zcml"/>
 
   <permission
     id="collective.portlet.oembed.AddOEmbedPortlet"

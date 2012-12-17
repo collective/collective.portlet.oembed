@@ -1,0 +1,10 @@
+<div>
+  <a class="oembed-data"
+    tal:attributes="href view/data/remote_url"
+    tal:content="view/data/header"></a>
+</div>
+<script type="text/javascript">
+$(document).ready(function() {
+  $('.portletOEmbed .oembed-data').oembed(null, {embedMethod: "replace"});
+});
+</script>

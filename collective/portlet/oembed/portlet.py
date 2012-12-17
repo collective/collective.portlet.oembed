@@ -13,6 +13,7 @@ from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
 
 from collective.portlet.oembed import messageFactory as _
 from collective.portlet.oembed import ploneMessageFactory as _p
+from plone.registry.interfaces import IRegistry
 
 class IOEmbedPortlet(IPortletDataProvider):
     """A portlet which renders external content using oembed service"""
@@ -90,8 +91,20 @@ class Renderer(static.Renderer):
     """
 
     render = ViewPageTemplateFile('portlet.pt')
+    jsoembedall = ViewPageTemplateFile('jsoembedall.pt')
+
+    def get_rendering(self):
+        registry = component.getUtility(IRegistry)
+        if 'collective.portlet.oembed.rendering' in registry:
+            return registry['collective.portlet.oembed.rendering']
+        return 'collective.oembed'
 
     def embed(self):
+        if self.get_rendering() == "collective.js.oembedall":
+            return self.jsoembedall()
+        return self.embed_collective_oembed()
+
+    def embed_collective_oembed(self):
         consumer_view = component.queryMultiAdapter((self.context,
                                                      self.request),
                                        name=u'collective.oembed.superconsumer')
