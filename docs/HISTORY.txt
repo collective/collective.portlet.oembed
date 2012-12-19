@@ -5,6 +5,7 @@ Changelog
 ----------------
 
 - Add collective.js.oembedall rendering option
+- Add collective.oembed.jquery rendering option and activate it by default
 
 
 1.1 (2012-07-10)

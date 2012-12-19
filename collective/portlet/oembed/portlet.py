@@ -92,6 +92,7 @@ class Renderer(static.Renderer):
 
     render = ViewPageTemplateFile('portlet.pt')
     jsoembedall = ViewPageTemplateFile('jsoembedall.pt')
+    jsoembed = ViewPageTemplateFile('jsoembed.pt')
 
     def get_rendering(self):
         registry = component.getUtility(IRegistry)
@@ -102,6 +103,9 @@ class Renderer(static.Renderer):
     def embed(self):
         if self.get_rendering() == "collective.js.oembedall":
             return self.jsoembedall()
+        if self.get_rendering() == "collective.oembed.jquery":
+            return self.jsoembed()
+        #rendering should be "collective.oembed"
         return self.embed_collective_oembed()
 
     def embed_collective_oembed(self):

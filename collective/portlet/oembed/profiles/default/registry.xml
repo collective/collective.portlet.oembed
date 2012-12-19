@@ -3,6 +3,6 @@
         <field type="plone.registry.field.ASCIILine">
             <title>Rendering</title>
         </field>
-        <value>collective.oembed</value>
+        <value>collective.oembed.jquery</value>
     </record>
 </registry>
