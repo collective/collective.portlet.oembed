@@ -18,6 +18,7 @@
     </dt>
 
     <dd class="portletItem odd">
+        <div tal:replace="structure view/embed" />
         <tal:corners condition="not:view/has_footer">
             <span class="portletBottomLeft"></span>
             <span class="portletBottomRight"></span>
