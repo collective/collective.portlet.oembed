@@ -1,8 +1,8 @@
 Changelog
 =========
 
-1.3 (unreleased)
-----------------
+1.2.1 (2013-01-02)
+------------------
 
 - Add responsive option to portlet to be able to unactivate for some URLs like soundcloud which are already responsive.
 
