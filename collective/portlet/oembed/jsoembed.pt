@@ -1,1 +1,6 @@
-<a class="oembed oembed-responsive" tal:attributes="href view/data/remote_url; data-maxwidth view/data/maxwidth; data-maxheight view/data/maxheight" tal:content="view/data/header"></a>
+<a class="oembed oembed-responsive"
+  tal:attributes="href view/data/remote_url;
+    data-maxwidth view/data/maxwidth;
+    data-maxheight view/data/maxheight;
+    class python:view.is_responsive() and 'oembed oembed-responsive' or 'oembed'"
+  tal:content="view/data/header"></a>

@@ -38,6 +38,13 @@ class IOEmbedPortlet(IPortletDataProvider):
         description=_(u"The height will be added to the oembed request"),
         required=False)
 
+    responsive = schema.Bool(
+        title=_(u"Responsive"),
+        description=_(u"If the response is an iframe the code will be updated \
+        to become responsive. In some case this can broke the returned code.\
+        In that case you can unactivate it by uncheck this option."),
+        default=True)
+
     omit_border = schema.Bool(
         title=_(u"Omit portlet border"),
         description=_(u"Tick this box if you want to render the text above "
@@ -64,19 +71,21 @@ class Assignment(base.Assignment):
     remote_url = ""
     maxwidth = None
     maxheight = None
+    responsive = True
     omit_border = False
     footer = u""
     more_url = ''
 
     def __init__(self, header=u"", remote_url=None, maxwidth=None,
                  maxheight=None, omit_border=False, footer=u"",
-                 more_url=''):
+                 more_url='', responsive=True):
         self.header = header
         self.omit_border = omit_border
         self.footer = footer
         self.more_url = more_url
         self.maxheight = maxheight
         self.maxwidth = maxwidth
+        self.responsive = responsive
         self.remote_url = remote_url
 
     @property
@@ -133,6 +142,9 @@ class Renderer(static.Renderer):
 
     def has_footer(self):
         return bool(self.data.footer)
+
+    def is_responsive(self):
+        return self.data.responsive
 
 
 class AddForm(base.AddForm):
