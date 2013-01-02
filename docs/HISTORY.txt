@@ -6,7 +6,7 @@ Changelog
 
 - Add collective.js.oembedall rendering option
 - Add collective.oembed.jquery rendering option and activate it by default
-
+- Activate responsive option managed by collective.oembed.jquery rendering
 
 1.1 (2012-07-10)
 ----------------

@@ -1,1 +1,1 @@
-<a class="oembed" tal:attributes="href view/data/remote_url; data-maxwidth view/data/maxwidth; data-maxheight view/data/maxheight" tal:content="view/data/header"></a>
+<a class="oembed oembed-responsive" tal:attributes="href view/data/remote_url; data-maxwidth view/data/maxwidth; data-maxheight view/data/maxheight" tal:content="view/data/header"></a>
