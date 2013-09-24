@@ -11,5 +11,10 @@ messageFactory = MessageFactory('collective.portlet.oembed')
 ploneMessageFactory = MessageFactory('plone')
 
 from Products.CMFCore.permissions import setDefaultRoles
-setDefaultRoles('collective.portlet.embed: Add oembed portlet',
+from AccessControl.SecurityInfo import ModuleSecurityInfo
+
+security = ModuleSecurityInfo('collective.portlet.oembed')
+security.declarePublic('')
+AddOembedPortlet = 'collective.portlet.embed: Add oembed portlet'
+setDefaultRoles(AddOembedPortlet,
                 ('Manager', 'Site Administrator', 'Owner',))
