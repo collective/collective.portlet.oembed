@@ -35,6 +35,9 @@ setup(name='collective.portlet.oembed',
           'collective.oembed',
           # -*- Extra requirements: -*-
       ],
+      extras_require=dict(
+          test=['plone.app.testing', 'plone.app.robotframework', 'selenium'],
+      ),
       entry_points="""
       # -*- Entry points: -*-
       [z3c.autoinclude.plugin]
