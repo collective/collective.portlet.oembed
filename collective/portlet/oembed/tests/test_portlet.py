@@ -15,10 +15,11 @@ from collective.portlet.oembed.tests.base import IntegrationTestCase
 class TestPortlet(IntegrationTestCase):
 
     def test_portlet_type_registered(self):
-        portlet = getUtility(
+        portlet_oembed = getUtility(
             IPortletType,
-            name='collective.portlet.oembed.OEmbed')
-        self.assertEquals(portlet.addview,
+            name='collective.portlet.oembed.OEmbed'
+        )
+        self.assertEquals(portlet_oembed.addview,
                           'collective.portlet.oembed.OEmbed')
 
     def test_interfaces(self):

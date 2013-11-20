@@ -26,7 +26,8 @@ class IOEmbedPortlet(IPortletDataProvider):
 
     remote_url = schema.URI(
         title=_(u"Remote URL"),
-        description=_(u"The external content you want to display using oembed"),
+        description=_(u"The external content you want to display using "
+                      u"oembed"),
         required=True)
 
     maxwidth = schema.Int(
@@ -121,9 +122,10 @@ class Renderer(static.Renderer):
         return self.embed_collective_oembed()
 
     def embed_collective_oembed(self):
-        consumer_view = component.queryMultiAdapter((self.context,
-                                                     self.request),
-                                       name=u'collective.oembed.superconsumer')
+        consumer_view = component.queryMultiAdapter(
+            (self.context, self.request),
+            name=u'collective.oembed.superconsumer'
+        )
         if consumer_view is None:
             return u""
         consumer_view._url = self.data.remote_url
@@ -153,10 +155,10 @@ class Renderer(static.Renderer):
 class AddForm(base.AddForm):
     """add form"""
     form_fields = form.Fields(IOEmbedPortlet)
-    label = _(u"title_add_portlet",
-              default=u"Add oembed portlet")
+    label = _(u"title_add_portlet", default=u"Add oembed portlet")
     description = _(u"description_portlet",
-                    default=u"A portlet which renders external content using oembed service")
+                    default=u"A portlet which renders external content using "
+                    u"oembed service")
 
     def create(self, data):
         return Assignment(**data)
@@ -169,4 +171,5 @@ class EditForm(base.EditForm):
     label = _(u"title_edit_portlet",
               default=u"Edit oembed portlet")
     description = _(u"description_portlet",
-                    default=u"A portlet which renders external content using oembed service")
+                    default=u"A portlet which renders external content using "
+                    u"oembed service")
