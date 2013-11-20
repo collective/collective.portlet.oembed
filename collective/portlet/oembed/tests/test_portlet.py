@@ -8,7 +8,7 @@ from plone.portlets.interfaces import IPortletDataProvider
 from plone.portlets.interfaces import IPortletRenderer
 from plone.app.portlets.storage import PortletAssignmentMapping
 
-from collective.portlet.oembed import oembed
+from collective.portlet.oembed import portlet
 from collective.portlet.oembed.tests.base import IntegrationTestCase
 
 
@@ -17,25 +17,25 @@ class TestPortlet(IntegrationTestCase):
     def test_portlet_type_registered(self):
         portlet = getUtility(
             IPortletType,
-            name='collective.portlet.oembed.oembed')
+            name='collective.portlet.oembed.OEmbed')
         self.assertEquals(portlet.addview,
-                          'collective.portlet.oembed.oembed')
+                          'collective.portlet.oembed.OEmbed')
 
     def test_interfaces(self):
         # TODO: Pass any keyword arguments to the Assignment constructor
-        portlet = oembed.Assignment()
-        self.failUnless(IPortletAssignment.providedBy(portlet))
-        self.failUnless(IPortletDataProvider.providedBy(portlet.data))
+        portlet_oembed = portlet.Assignment()
+        self.failUnless(IPortletAssignment.providedBy(portlet_oembed))
+        self.failUnless(IPortletDataProvider.providedBy(portlet_oembed.data))
 
     def test_invoke_add_view(self):
-        portlet = getUtility(
+        portlet_oembed = getUtility(
             IPortletType,
-            name='collective.portlet.oembed.oembed')
+            name='collective.portlet.oembed.OEmbed')
         mapping = self.portal.restrictedTraverse(
             '++contextportlets++plone.leftcolumn')
         for m in mapping.keys():
             del mapping[m]
-        addview = mapping.restrictedTraverse('+/' + portlet.addview)
+        addview = mapping.restrictedTraverse('+/' + portlet_oembed.addview)
 
         # TODO: Pass a dictionary containing dummy form inputs from the add
         # form.
@@ -45,16 +45,16 @@ class TestPortlet(IntegrationTestCase):
 
         self.assertEquals(len(mapping), 1)
         self.failUnless(isinstance(mapping.values()[0],
-                                   oembed.Assignment))
+                                   portlet.Assignment))
 
     def test_invoke_edit_view(self):
         # NOTE: This test can be removed if the portlet has no edit form
         mapping = PortletAssignmentMapping()
         request = self.folder.REQUEST
 
-        mapping['foo'] = oembed.Assignment()
+        mapping['foo'] = portlet.Assignment()
         editview = getMultiAdapter((mapping['foo'], request), name='edit')
-        self.failUnless(isinstance(editview, oembed.EditForm))
+        self.failUnless(isinstance(editview, portlet.EditForm))
 
     def test_obtain_renderer(self):
         context = self.folder
@@ -64,11 +64,11 @@ class TestPortlet(IntegrationTestCase):
                              context=self.portal)
 
         # TODO: Pass any keyword arguments to the Assignment constructor
-        assignment = oembed.Assignment()
+        assignment = portlet.Assignment()
 
         renderer = getMultiAdapter(
             (context, request, view, manager, assignment), IPortletRenderer)
-        self.failUnless(isinstance(renderer, oembed.Renderer))
+        self.failUnless(isinstance(renderer, portlet.Renderer))
 
 
 class TestRenderer(IntegrationTestCase):
@@ -83,14 +83,14 @@ class TestRenderer(IntegrationTestCase):
 
         # TODO: Pass any default keyword arguments to the Assignment
         # constructor.
-        assignment = assignment or oembed.Assignment()
+        assignment = assignment or portlet.Assignment()
         return getMultiAdapter((context, request, view, manager, assignment),
                                IPortletRenderer)
 
     def test_render(self):
         # TODO: Pass any keyword arguments to the Assignment constructor.
         r = self.renderer(context=self.portal,
-                          assignment=oembed.Assignment())
+                          assignment=portlet.Assignment())
         r = r.__of__(self.folder)
         r.update()
         #output = r.render()

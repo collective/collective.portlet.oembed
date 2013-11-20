@@ -15,6 +15,7 @@ from collective.portlet.oembed import messageFactory as _
 from collective.portlet.oembed import ploneMessageFactory as _p
 from plone.registry.interfaces import IRegistry
 
+
 class IOEmbedPortlet(IPortletDataProvider):
     """A portlet which renders external content using oembed service"""
 
@@ -63,6 +64,7 @@ class IOEmbedPortlet(IPortletDataProvider):
                       "will link to this URL."),
         required=False)
 
+
 class Assignment(base.Assignment):
     interface.implements(IOEmbedPortlet)
 
@@ -94,6 +96,7 @@ class Assignment(base.Assignment):
         "manage portlets" screen. Here, we use the title that the user gave.
         """
         return self.header
+
 
 class Renderer(static.Renderer):
     """Portlet renderer.

@@ -5,6 +5,7 @@
     xmlns:plone="http://namespaces.plone.org/plone"
     i18n_domain="collective.portlet.oembed">
 
+  <includeDependencies package="."/>
   <genericsetup:registerProfile
       name="default"
       title="collective.portlet.oembed"
